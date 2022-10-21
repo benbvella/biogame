@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macromolecules in the Cell!</title>
+</head>
+<body>
+    <h1>Macromolecules in the Cell!</h1>
+    <button id='startbtn' onclick="start();">Start Game</button>
+    <br><br>
+
+    <div id="stage">
+        <canvas id="mouse-layer" width="500" height="500"></canvas>
+        <canvas id="content-layer" width="500" height="500"></canvas>
+        <canvas id="pic-layer" width="500" height="500"></canvas>
+        <canvas id="box-layer" width="500" height="500"></canvas>
+        <canvas id="background-layer" width="500" height="500"></canvas>
+    </div>
+
+    <style>
+    #stage {
+        width: 500px;
+        height: 500px;
+        position: relative;
+        border: 2px solid black;
+    }
+      
+    canvas { position: absolute; }
+    #mouse-layer { z-index: 5; }
+    #content-layer { z-index: 4; }
+    #box-layer { z-index: 3; }
+    #pic-layer { z-index: 2; }
+    #background-layer { z-index: 1; }
+
+    </style>
+
+    <script src="mouse.js"></script>
+    <script src="content.js"></script>
+    <script src="pics.js"></script>
+    <script src="background.js"></script>
+    <script src="boxes.js"></script>
+
+
+    <script>
+        function tick() {
+            document.addEventListener('mousemove', moveMouse);
+            document.addEventListener('mousedown', click);
+            setTimeout(() => {tick()}, 20);
+        }
+        tick();
+    </script>
+</body>
+</html>
